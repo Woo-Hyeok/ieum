@@ -1,8 +1,11 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import react from 'eslint-plugin-react'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
+import js from '@eslint/js';
+import globals from 'globals';
+import react from 'eslint-plugin-react';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import prettier from 'eslint-plugin-prettier';
+import tailwindcss from 'prettier-plugin-tailwindcss';
 
 export default [
   { ignores: ['dist'] },
@@ -22,6 +25,8 @@ export default [
       react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      prettier,
+      'tailwindcss': tailwindcss
     },
     rules: {
       ...js.configs.recommended.rules,
@@ -33,6 +38,10 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+      'prettier/prettier': 'error',
+      'react/prop-types': 'off',
+      'no-unused-vars': 'off',
     },
   },
-]
+  eslintConfigPrettier,
+];
